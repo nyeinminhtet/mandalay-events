@@ -4,7 +4,6 @@ import React, { useState } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import * as z from "zod";
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -13,10 +12,8 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
@@ -28,6 +25,9 @@ import { Textarea } from "../ui/textarea";
 import { FileUploader } from "./FileUploader";
 import Image from "next/image";
 import { Checkbox } from "../ui/checkbox";
+import { useUploadThing } from "@/lib/uploadthing";
+import { useRouter } from "next/navigation";
+import { createEvent } from "@/lib/actions/event.action";
 
 interface EventCreateProps {
   userId: string;
@@ -38,14 +38,42 @@ const EventForm = ({ userId, type }: EventCreateProps) => {
   const [files, setFiles] = useState<File[]>([]);
 
   const initialValue = eventDefaultValues;
+  const router = useRouter();
+
+  const { startUpload } = useUploadThing("imageUploader");
 
   const form = useForm<FormValidator>({
     resolver: zodResolver(formSchema),
     defaultValues: initialValue,
   });
 
-  function onSubmit(values: FormValidator) {
-    console.log(values);
+  async function onSubmit(values: FormValidator) {
+    let uploadedImageUrl = values.imageUrl;
+
+    if (files.length > 0) {
+      const uploadedImages = await startUpload(files);
+
+      if (!uploadedImages) return;
+
+      uploadedImageUrl = uploadedImages[0].url;
+    }
+
+    if (type === "Create") {
+      try {
+        const newEvent = await createEvent({
+          event: { ...values, imageUrl: uploadedImageUrl },
+          userId,
+          path: "/profile",
+        });
+
+        if (newEvent) {
+          form.reset();
+          router.push(`/events/${newEvent._id}`);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
   }
   return (
     <Form {...form}>
@@ -61,7 +89,7 @@ const EventForm = ({ userId, type }: EventCreateProps) => {
               <FormItem className="w-full">
                 <FormControl>
                   <Input
-                    placeholder="Event title"
+                    placeholder="ပွဲ အမည်"
                     {...field}
                     className="input-field"
                   />
@@ -97,7 +125,7 @@ const EventForm = ({ userId, type }: EventCreateProps) => {
               <FormItem className="w-full">
                 <FormControl className="h-72">
                   <Textarea
-                    placeholder="Description"
+                    placeholder="အကြောင်းအရာ"
                     {...field}
                     className="textarea rounded-2xl"
                   />
@@ -141,7 +169,7 @@ const EventForm = ({ userId, type }: EventCreateProps) => {
                       height={24}
                     />
                     <Input
-                      placeholder="Event Location"
+                      placeholder="တည်နေရာ"
                       {...field}
                       className="input-field"
                     />
@@ -170,7 +198,7 @@ const EventForm = ({ userId, type }: EventCreateProps) => {
                       className="filter-grey"
                     />
                     <p className="ml-3 whitespace-nowrap text-grey-600">
-                      Start Date:
+                      စတင်မည့်ရက်:
                     </p>
                     <DatePicker
                       selected={field.value}
@@ -203,7 +231,7 @@ const EventForm = ({ userId, type }: EventCreateProps) => {
                       className="filter-grey"
                     />
                     <p className="ml-3 whitespace-nowrap text-grey-600">
-                      End Date:
+                      ပြီးဆုံးမည့်ရက်:
                     </p>
                     <DatePicker
                       selected={field.value}
@@ -239,7 +267,7 @@ const EventForm = ({ userId, type }: EventCreateProps) => {
                     />
                     <Input
                       type="number"
-                      placeholder="Price"
+                      placeholder="စျေးနှုန်း"
                       {...field}
                       className="p-regular-16 border-0 bg-grey-50 outline-offset-0
                        focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
@@ -256,10 +284,12 @@ const EventForm = ({ userId, type }: EventCreateProps) => {
                                 className="whitespace-nowrap pr-3 leading-none peer-disabled:cursor-not-allowed
                                           peer-disabled:opacity-70"
                               >
-                                Free Ticket
+                                အခမဲ့ လက်မှတ်
                               </label>
                               <Checkbox
                                 id="isFree"
+                                onCheckedChange={field.onChange}
+                                checked={field.value}
                                 className="mr-2 h-5 w-5 border-2 border-primary-500"
                               />
                             </div>
@@ -290,7 +320,7 @@ const EventForm = ({ userId, type }: EventCreateProps) => {
                       height={24}
                     />
                     <Input
-                      placeholder="link"
+                      placeholder="လင့်"
                       {...field}
                       className="input-field"
                     />
@@ -309,7 +339,9 @@ const EventForm = ({ userId, type }: EventCreateProps) => {
           disabled={form.formState.isSubmitting}
           className="button col-span-2 w-full"
         >
-          {form.formState.isSubmitting ? "Submitting..." : `${type} Event`}
+          {form.formState.isSubmitting
+            ? "ဖန်တီးနေသည်..."
+            : `${type === "Create" ? "ဖန်တီးရန်" : "ပြုပြင်ရန်"}`}
         </Button>
       </form>
     </Form>

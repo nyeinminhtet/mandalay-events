@@ -1,4 +1,4 @@
-import React, { startTransition, useState } from "react";
+import React, { startTransition, useEffect, useState } from "react";
 
 import {
   Select,
@@ -19,8 +19,12 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 
-import { ICatgory } from "@/lib/database/models/category.model";
+import { ICategory } from "@/lib/database/models/category.model";
 import { Input } from "../ui/input";
+import {
+  createCategory,
+  getAllCategories,
+} from "@/lib/actions/category.action";
 
 interface DropdownProps {
   value: string;
@@ -28,15 +32,31 @@ interface DropdownProps {
 }
 
 const Dropdown = ({ value, onChangeHandler }: DropdownProps) => {
-  const [categories, setCategories] = useState<ICatgory[]>([]);
+  const [categories, setCategories] = useState<ICategory[]>([]);
   const [newCategory, setNewCategory] = useState("");
 
-  const handleClickAdd = () => {};
+  const handleAddCategory = () => {
+    createCategory({
+      categoryName: newCategory.trim(),
+    }).then((category) => {
+      setCategories((pre) => [...pre, category]);
+    });
+  };
+
+  useEffect(() => {
+    const getCategories = async () => {
+      const categoriesList = await getAllCategories();
+
+      categoriesList && setCategories(categoriesList);
+    };
+
+    getCategories();
+  }, []);
 
   return (
     <Select onValueChange={onChangeHandler} defaultValue={value}>
       <SelectTrigger className="select-field">
-        <SelectValue placeholder="Category" />
+        <SelectValue placeholder="ပွဲအမျိုးအစား" />
       </SelectTrigger>
       <SelectContent>
         {categories.length > 0 &&
@@ -52,26 +72,26 @@ const Dropdown = ({ value, onChangeHandler }: DropdownProps) => {
 
         <AlertDialog>
           <AlertDialogTrigger className="p-medium-14 flex w-full rounded-sm py-3 pl-8  hover:bg-muted-foreground hover:text-secondary focus:text-secondary">
-            Open
+            အသစ်ဖန်တီးရန်
           </AlertDialogTrigger>
           <AlertDialogContent className="bg-white">
             <AlertDialogHeader>
-              <AlertDialogTitle>New Category</AlertDialogTitle>
+              <AlertDialogTitle>အမျိုးအစား အသစ်</AlertDialogTitle>
               <AlertDialogDescription>
                 <Input
                   type="text"
-                  placeholder="Category name"
+                  placeholder="အမည်"
                   className="input-field mt-3"
                   onChange={(e) => setNewCategory(e.target.value)}
                 />
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
-              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogCancel>ပယ်ဖျက်ရန်</AlertDialogCancel>
               <AlertDialogAction
-                onClick={() => startTransition(handleClickAdd)}
+                onClick={() => startTransition(handleAddCategory)}
               >
-                Add
+                ထည့်ရန်
               </AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>
