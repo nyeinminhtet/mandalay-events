@@ -6,7 +6,7 @@ export interface IEvent extends Document {
   description?: string;
   location: string;
   createdAt: Date;
-  imgUrl: string;
+  imageUrl: string;
   startDateTime: Date;
   endDateTime: Date;
   price?: string;
