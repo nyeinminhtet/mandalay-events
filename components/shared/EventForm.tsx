@@ -123,7 +123,7 @@ const EventForm = ({ userId, type, event, eventId }: EventCreateProps) => {
                   <Input
                     placeholder="ပွဲ အမည်"
                     {...field}
-                    className="input-field"
+                    className="input-field shadow-none"
                   />
                 </FormControl>
 
@@ -203,7 +203,7 @@ const EventForm = ({ userId, type, event, eventId }: EventCreateProps) => {
                     <Input
                       placeholder="တည်နေရာ"
                       {...field}
-                      className="input-field"
+                      className="input-field shadow-none"
                     />
                   </div>
                 </FormControl>
@@ -301,7 +301,7 @@ const EventForm = ({ userId, type, event, eventId }: EventCreateProps) => {
                       type="number"
                       placeholder="စျေးနှုန်း"
                       {...field}
-                      className="p-regular-16 border-0 bg-grey-50 outline-offset-0
+                      className="p-regular-16 shadow-none border-0 bg-grey-50 outline-offset-0
                        focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
                     />
                     <FormField
@@ -354,7 +354,7 @@ const EventForm = ({ userId, type, event, eventId }: EventCreateProps) => {
                     <Input
                       placeholder="လင့်"
                       {...field}
-                      className="input-field"
+                      className="input-field shadow-none"
                     />
                   </div>
                 </FormControl>

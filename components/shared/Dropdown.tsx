@@ -81,7 +81,7 @@ const Dropdown = ({ value, onChangeHandler }: DropdownProps) => {
                 <Input
                   type="text"
                   placeholder="အမည်"
-                  className="input-field mt-3"
+                  className="input-field mt-3 shadow-none"
                   onChange={(e) => setNewCategory(e.target.value)}
                 />
               </AlertDialogDescription>
