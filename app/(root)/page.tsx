@@ -59,8 +59,8 @@ export default async function Home() {
 
         <Collection
           data={events?.data}
-          emptyTitle="No Events Found"
-          emptyStateSubText="Come back later"
+          emptyTitle="ပွဲများ မရှိသေးပါ"
+          emptyStateSubText="ခန နေမှ ပြန်လာကြည့်ပါ။"
           collectionType="All_Events"
           limit={6}
           page={1}

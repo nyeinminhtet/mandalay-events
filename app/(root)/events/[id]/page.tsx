@@ -110,8 +110,8 @@ const EventDetailsPage = async ({
 
         <Collection
           data={relatedEvents?.data}
-          emptyTitle="No Events Found"
-          emptyStateSubText="Come back later"
+          emptyTitle="အမျိုးအစားတူသော ပွဲများမရှိသေးပါ"
+          emptyStateSubText="နောက်တခါ မှပြန်လာကြည့်ပါ။"
           collectionType="All_Events"
           limit={6}
           page={1}
