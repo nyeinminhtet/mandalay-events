@@ -69,12 +69,12 @@ const Card = ({ event, hasOrderLink, hidePrice }: CardProps) => {
         </Link>
 
         <div className="flex-between w-full">
-          <p className="p-medium-14 md:p-medium-16 text-grey-600 flex gap-1 items-center">
+          <div className="p-medium-14 md:p-medium-16 text-grey-600 flex gap-1 items-center">
             <span className="text-xs text-muted-foreground">ပွဲစီစဥ်သူ</span>-
             <p className="capitalize">
               {event.organizer.firstName} {event.organizer.lastName}
             </p>
-          </p>
+          </div>
 
           {hasOrderLink && (
             <Link
