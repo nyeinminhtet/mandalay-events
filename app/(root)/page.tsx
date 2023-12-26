@@ -71,8 +71,8 @@ export default async function Home({ searchParams }: SearchParamProps) {
           emptyStateSubText="ခန နေမှ ပြန်လာကြည့်ပါ။"
           collectionType="All_Events"
           limit={6}
-          page={1}
-          totalPages={2}
+          page={page}
+          totalPages={events?.totalPages}
         />
       </section>
     </>
