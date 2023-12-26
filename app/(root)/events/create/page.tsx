@@ -3,6 +3,11 @@ import React from "react";
 import { auth } from "@clerk/nextjs";
 
 import EventForm from "@/components/shared/EventForm";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Create Event",
+};
 
 const CreateEventPage = () => {
   const { sessionClaims } = auth();

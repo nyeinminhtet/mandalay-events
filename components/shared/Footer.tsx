@@ -4,13 +4,13 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="border-t bg-primary-50">
+    <footer className="border-t ">
       <div className="flex-center  wrapper flex-between flex flex-col gap-4 p-5 text-center sm:flex-row">
-        <Link href="/" className="bg-zinc-50  rounded-full">
+        <Link href="/">
           <Image src="/assets/logo.svg" alt="logo" width={38} height={38} />
         </Link>
 
-        <p className="text-secondary">
+        <p className="text-primary">
           Copyright&copy; 2023{" "}
           <span className="text-green-600">Mandalay Events</span> . All Rights
           reserved.

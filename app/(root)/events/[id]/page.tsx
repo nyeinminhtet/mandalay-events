@@ -1,3 +1,6 @@
+import React from "react";
+import Image from "next/image";
+
 import CheckoutButton from "@/components/shared/CheckoutButton";
 import Collection from "@/components/shared/Collection";
 import {
@@ -6,8 +9,7 @@ import {
 } from "@/lib/actions/event.action";
 import { formatDateTime } from "@/lib/utils";
 import { SearchParamProps } from "@/types";
-import Image from "next/image";
-import React from "react";
+import { Metadata, ResolvingMetadata } from "next";
 
 const EventDetailsPage = async ({
   params: { id },
@@ -120,9 +122,9 @@ const EventDetailsPage = async ({
           emptyTitle="အမျိုးအစားတူသော ပွဲများမရှိသေးပါ"
           emptyStateSubText="နောက်တခါ မှပြန်လာကြည့်ပါ။"
           collectionType="All_Events"
-          limit={6}
-          page={1}
-          totalPages={2}
+          limit={3}
+          page={searchParams.page as string}
+          totalPages={relatedEvents?.totalPages}
         />
       </section>
     </>
@@ -130,3 +132,24 @@ const EventDetailsPage = async ({
 };
 
 export default EventDetailsPage;
+
+export async function generateMetadata(
+  { params, searchParams }: SearchParamProps,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  // read route params
+  const id = params.id;
+
+  // fetch data
+  const event = await getEventById(id);
+
+  // optionally access and extend (rather than replace) parent metadata
+  const previousImages = (await parent).openGraph?.images || [];
+
+  return {
+    title: event.title,
+    openGraph: {
+      images: ["/some-specific-page-image.jpg", ...previousImages],
+    },
+  };
+}

@@ -1,8 +1,14 @@
+import { Metadata } from "next";
+
 import { getOrdersByEvent } from "@/lib/actions/order.action";
 import { formatDateTime, formatPrice } from "@/lib/utils";
 import { SearchParamProps } from "@/types";
 import { IOrderItem } from "@/lib/database/models/order.model";
 import Search from "@/components/shared/Search";
+
+export const metadata: Metadata = {
+  title: "Orders",
+};
 
 const Orders = async ({ searchParams }: SearchParamProps) => {
   const eventId = (searchParams?.eventId as string) || "";
@@ -19,7 +25,7 @@ const Orders = async ({ searchParams }: SearchParamProps) => {
       </section>
 
       <section className="wrapper mt-8">
-        {/* <Search placeholder="ဝယ်သူနာမည်ဖြင့်ရှာရန်..." /> */}
+        <Search placeholder="ဝယ်သူနာမည်ဖြင့်ရှာရန်..." />
       </section>
 
       <section className="wrapper overflow-x-auto">

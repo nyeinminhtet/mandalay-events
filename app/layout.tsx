@@ -10,7 +10,10 @@ const popins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Mandalay Events",
+  title: {
+    template: "Mandalay Events | %s",
+    default: "Mandalay Events",
+  },
   description: "Find out the happiest events in Madalay.",
   icons: {
     icon: "/assets/logo.svg",
