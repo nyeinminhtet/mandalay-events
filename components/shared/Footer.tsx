@@ -10,7 +10,7 @@ const Footer = () => {
           <Image src="/assets/logo.svg" alt="logo" width={38} height={38} />
         </Link>
 
-        <p className="text-primary">
+        <p className="text-primary text-xs sm:text-base">
           Copyright&copy; 2023{" "}
           <span className="text-green-600">Mandalay Events</span> . All Rights
           reserved.
