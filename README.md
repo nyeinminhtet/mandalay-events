@@ -1,4 +1,5 @@
-# Mandalay Events ![Logo](https://mandalay-events.vercel.app/assets/logo.png) 
+# Mandalay Events 
+![Logo](https://mandalay-events.vercel.app/assets/logo.png) 
 
 You can find out about festivals and music shows in Mandalay from one place. You can buy a ticket. The event time and place can be arranged together.
 
