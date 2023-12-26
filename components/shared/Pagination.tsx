@@ -13,7 +13,7 @@ interface PaginationProps {
 
 const Pagination = ({
   urlParamName,
-  page = 1,
+  page = 0,
   totalPages,
 }: PaginationProps) => {
   const router = useRouter();
