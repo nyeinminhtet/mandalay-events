@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Loader = () => {
   return (
-    <div className="h-full flex items-center justify-center bg-primary">
+    <div className="h-screen flex items-center justify-center bg-primary">
       <Image
         src="/assets/icons/spinner.svg"
         alt="loader image"
