@@ -11,7 +11,11 @@ interface PaginationProps {
   urlParamName?: string;
 }
 
-const Pagination = ({ urlParamName, page, totalPages }: PaginationProps) => {
+const Pagination = ({
+  urlParamName,
+  page = 1,
+  totalPages,
+}: PaginationProps) => {
   const router = useRouter();
   const searchParams = useSearchParams();
 

@@ -22,19 +22,21 @@ const EventDetailsPage = async ({
     eventId: event._id,
     page: searchParams.page as string,
   });
+
   return (
     <>
       <section className="flex justify-center bg-slate-950 bg-contain text-white">
-        <div className="grid grid-cols-1 md:grid-cols-2 2xl:max-w-7xl">
-          <Image
-            src={event.imageUrl}
-            alt="event image"
-            width={1000}
-            height={1000}
-            quality={90}
-            priority
-            className="h-full min-h-[300px] object-contain object-center"
-          />
+        <div className="grid grid-cols-1 md:grid-cols-2 2xl:max-w-7xl ">
+          <div className="w-full h-[20rem] sm:h-[30rem] relative">
+            <Image
+              src={event.imageUrl}
+              alt="event image"
+              fill
+              quality={90}
+              priority
+              className="object-contain object-center"
+            />
+          </div>
 
           <div className="flex w-full flex-col gap-8 p-5 md:p-10 ">
             <div className="flex flex-col gap-6">
@@ -123,7 +125,7 @@ const EventDetailsPage = async ({
           emptyStateSubText="နောက်တခါ မှပြန်လာကြည့်ပါ။"
           collectionType="All_Events"
           limit={3}
-          page={searchParams.page as string}
+          page={searchParams?.page as string}
           totalPages={relatedEvents?.totalPages}
         />
       </section>
