@@ -22,7 +22,12 @@ const CheckoutButton = ({ event }: { event: IEvent }) => {
       ) : (
         <>
           <SignedOut>
-            <Button asChild size="lg" className="button rounded-full">
+            <Button
+              asChild
+              size="lg"
+              variant="destructive"
+              className="button rounded-full"
+            >
               <Link href="/sign-in">လက်မှတ် ဝယ်ရန်</Link>
             </Button>
           </SignedOut>

@@ -53,9 +53,9 @@ const EventDetailsPage = async ({
                 </div>
 
                 <p className="p-medium-18 ml-2 mt-2 sm:mt-0">
-                  by{" "}
                   <span className="text-muted-foreground capitalize">
-                    {event.organizer.firstName} {event.organizer.lastName}
+                    {event.organizer.firstName} {event.organizer.lastName}{" "}
+                    မှစီစဥ်သည်။
                   </span>
                 </p>
               </div>
