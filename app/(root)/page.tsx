@@ -2,12 +2,12 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
-import CategoryFilter from "@/components/shared/CategoryFilter";
-import Collection from "@/components/shared/Collection";
+import { SearchParamProps } from "@/types";
 import Search from "@/components/shared/Search";
 import { Button } from "@/components/ui/button";
+import Collection from "@/components/shared/Collection";
 import { getAllEvents } from "@/lib/actions/event.action";
-import { SearchParamProps } from "@/types";
+import CategoryFilter from "@/components/shared/CategoryFilter";
 
 export const metadata: Metadata = {
   title: "Home",
