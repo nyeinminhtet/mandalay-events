@@ -14,14 +14,15 @@ export const metadata: Metadata = {
 };
 
 export default async function Home({ searchParams }: SearchParamProps) {
-  const page = Number(searchParams?.page) || 1;
-  const searchText = (searchParams?.query as string) || "";
-  const category = (searchParams?.category as string) || "";
+  const { page, query, category } = await searchParams;
+
+  const pageValue = Number(page) || 1;
+  const searchText = (query as string) || "";
 
   const events = await getAllEvents({
     query: searchText,
-    category,
-    page,
+    category: (category as string) || "",
+    page: pageValue,
     limit: 6,
   });
 
@@ -78,7 +79,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
           emptyStateSubText="ခန နေမှ ပြန်လာကြည့်ပါ။"
           collectionType="All_Events"
           limit={6}
-          page={page}
+          page={pageValue}
           totalPages={events?.totalPages}
         />
       </section>

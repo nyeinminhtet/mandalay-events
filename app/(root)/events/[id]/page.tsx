@@ -1,26 +1,26 @@
 import React from "react";
 import Image from "next/image";
+import { Metadata, ResolvingMetadata } from "next";
 
-import CheckoutButton from "@/components/shared/CheckoutButton";
-import Collection from "@/components/shared/Collection";
 import {
   getEventById,
   getRelatedEventsByCategory,
 } from "@/lib/actions/event.action";
-import { formatDateTime } from "@/lib/utils";
 import { SearchParamProps } from "@/types";
-import { Metadata, ResolvingMetadata } from "next";
+import { formatDateTime } from "@/lib/utils";
+import Collection from "@/components/shared/Collection";
+import CheckoutButton from "@/components/shared/CheckoutButton";
 
-const EventDetailsPage = async ({
-  params: { id },
-  searchParams,
-}: SearchParamProps) => {
+const EventDetailsPage = async ({ params, searchParams }: SearchParamProps) => {
+  const { id } = await params;
+  const { page } = await searchParams;
+
   const event = await getEventById(id);
 
   const relatedEvents = await getRelatedEventsByCategory({
     categoryId: event.category._id,
     eventId: event._id,
-    page: searchParams.page as string,
+    page: page as string,
   });
 
   return (
@@ -125,7 +125,7 @@ const EventDetailsPage = async ({
           emptyStateSubText="နောက်တခါ မှပြန်လာကြည့်ပါ။"
           collectionType="All_Events"
           limit={3}
-          page={searchParams?.page as string}
+          page={page as string}
           totalPages={relatedEvents?.totalPages}
         />
       </section>
@@ -140,7 +140,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   // read route params
-  const id = params.id;
+  const { id } = await params;
 
   // fetch data
   const event = await getEventById(id);

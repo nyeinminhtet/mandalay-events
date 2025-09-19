@@ -1,9 +1,9 @@
 import React from "react";
+import { Metadata } from "next";
 
 import { auth } from "@clerk/nextjs";
 
 import EventForm from "@/components/shared/EventForm";
-import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Create Event",

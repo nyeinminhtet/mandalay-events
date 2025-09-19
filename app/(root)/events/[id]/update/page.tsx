@@ -6,12 +6,14 @@ import EventForm from "@/components/shared/EventForm";
 import { getEventById } from "@/lib/actions/event.action";
 
 interface UpdateEventProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
-const UpdateEventPage = async ({ params: { id } }: UpdateEventProps) => {
+const UpdateEventPage = async (params: UpdateEventProps) => {
+  const { id } = await params.params;
+
   const { sessionClaims } = auth();
   const event = await getEventById(id);
   const userId = sessionClaims?.userId as string;
