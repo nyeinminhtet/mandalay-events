@@ -1,20 +1,22 @@
 import { Metadata } from "next";
 
-import { getOrdersByEvent } from "@/lib/actions/order.action";
-import { formatDateTime, formatPrice } from "@/lib/utils";
 import { SearchParamProps } from "@/types";
-import { IOrderItem } from "@/lib/database/models/order.model";
 import Search from "@/components/shared/Search";
+import { formatDateTime, formatPrice } from "@/lib/utils";
+import { getOrdersByEvent } from "@/lib/actions/order.action";
+import { IOrderItem } from "@/lib/database/models/order.model";
 
 export const metadata: Metadata = {
   title: "Orders",
 };
 
 const Orders = async ({ searchParams }: SearchParamProps) => {
-  const eventId = (searchParams?.eventId as string) || "";
-  const searchText = (searchParams?.query as string) || "";
+  const { eventId, searchText } = await searchParams;
 
-  const orders = await getOrdersByEvent({ eventId, searchString: searchText });
+  const orders = await getOrdersByEvent({
+    eventId: eventId as string,
+    searchString: searchText as string,
+  });
 
   return (
     <>

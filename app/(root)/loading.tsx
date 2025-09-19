@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 
 const Loader = () => {
+  return;
   return (
     <div className="h-screen flex items-center justify-center bg-primary">
       <Image

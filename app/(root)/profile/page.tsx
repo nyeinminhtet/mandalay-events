@@ -1,14 +1,15 @@
 import React from "react";
 import Link from "next/link";
+import { Metadata } from "next";
 
-import Collection from "@/components/shared/Collection";
+import { auth } from "@clerk/nextjs";
+
+import { SearchParamProps } from "@/types";
 import { Button } from "@/components/ui/button";
+import Collection from "@/components/shared/Collection";
 import { getEventsByUser } from "@/lib/actions/event.action";
 import { getOrdersByUser } from "@/lib/actions/order.action";
 import { IOrder } from "@/lib/database/models/order.model";
-import { SearchParamProps } from "@/types";
-import { auth } from "@clerk/nextjs";
-import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Profile",
@@ -17,13 +18,17 @@ export const metadata: Metadata = {
 const ProfilePage = async ({ searchParams }: SearchParamProps) => {
   const { sessionClaims } = auth();
   const userId = sessionClaims?.userId as string;
+  const { ordersPage, eventsPage } = await searchParams;
 
-  const ordersPage = Number(searchParams.ordersPage) || 1;
-  const eventsPage = Number(searchParams.eventsPage) || 1;
+  const convertedOrdersPage = Number(ordersPage) || 1;
+  const convertedEventsPage = Number(eventsPage) || 1;
 
-  const organizedEvents = await getEventsByUser({ userId, page: eventsPage });
+  const organizedEvents = await getEventsByUser({
+    userId,
+    page: convertedEventsPage,
+  });
 
-  const orders = await getOrdersByUser({ userId, page: ordersPage });
+  const orders = await getOrdersByUser({ userId, page: convertedOrdersPage });
   const orderEvents = orders?.data.map((order: IOrder) => order.event) || [];
 
   return (
@@ -51,7 +56,7 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
           emptyStateSubText="စိတ်မပူပါနဲ့ စိတ်လှုပ်ရှားစရာ ပွဲ တွေများစွာရှိပါတယ်။"
           collectionType="My_Tickets"
           limit={3}
-          page={ordersPage}
+          page={convertedOrdersPage}
           totalPages={orders?.totalPages}
           urlParamName="ordersPage"
         />
@@ -79,7 +84,7 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
           emptyStateSubText="ပွဲဖန်တီးရန် နေရာသို့သွားရောက် ဖန်တီးနိုင်ပါသည်။"
           collectionType="Events_Organized"
           limit={6}
-          page={eventsPage}
+          page={convertedEventsPage}
           totalPages={organizedEvents?.totalPages}
           urlParamName="eventsPage"
         />
