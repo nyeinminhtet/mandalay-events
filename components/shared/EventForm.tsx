@@ -1,14 +1,15 @@
 "use client";
 
+import Image from "next/image";
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 
-import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -16,19 +17,17 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-
-import { FormValidator, formSchema } from "@/lib/validation/formValidation";
-import { eventDefaultValues } from "@/constants";
 import Dropdown from "./Dropdown";
 import { Textarea } from "../ui/textarea";
-import { FileUploader } from "./FileUploader";
-import Image from "next/image";
 import { Checkbox } from "../ui/checkbox";
+import { FileUploader } from "./FileUploader";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { eventDefaultValues } from "@/constants";
 import { useUploadThing } from "@/lib/uploadthing";
-import { useRouter } from "next/navigation";
-import { createEvent, updateEvent } from "@/lib/actions/event.action";
 import { IEvent } from "@/lib/database/models/events.model";
+import { createEvent, updateEvent } from "@/lib/actions/event.action";
+import { FormValidator, formSchema } from "@/lib/validation/formValidation";
 
 interface EventCreateProps {
   userId: string;

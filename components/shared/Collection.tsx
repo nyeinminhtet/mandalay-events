@@ -1,8 +1,8 @@
 import React from "react";
 
-import { IEvent } from "@/lib/database/models/events.model";
-import Pagination from "./Pagination";
 import Card from "./Card";
+import Pagination from "./Pagination";
+import { IEvent } from "@/lib/database/models/events.model";
 
 interface CollectionProps {
   data: IEvent[];

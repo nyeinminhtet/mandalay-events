@@ -3,7 +3,6 @@ import { Metadata } from "next";
 import { Suspense } from "react";
 import { SearchParamProps } from "@/types";
 import Hero from "@/components/shared/Hero";
-import Loader from "@/components/shared/loading";
 import { getAllEvents } from "@/lib/actions/event.action";
 import { IEvent } from "@/lib/database/models/events.model";
 import EventsContainer from "@/components/shared/EventsContainer";

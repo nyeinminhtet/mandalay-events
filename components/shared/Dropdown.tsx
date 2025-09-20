@@ -19,12 +19,12 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 
-import { ICategory } from "@/lib/database/models/category.model";
-import { Input } from "../ui/input";
 import {
   createCategory,
   getAllCategories,
 } from "@/lib/actions/category.action";
+import { Input } from "../ui/input";
+import { ICategory } from "@/lib/database/models/category.model";
 
 interface DropdownProps {
   value: string;

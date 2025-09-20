@@ -1,11 +1,13 @@
 "use client";
 
 import React from "react";
-import { IEvent } from "@/lib/database/models/events.model";
-import { SignedIn, SignedOut, useUser } from "@clerk/nextjs";
-import { Button } from "../ui/button";
 import Link from "next/link";
+
+import { SignedIn, SignedOut, useUser } from "@clerk/nextjs";
+
 import CheckOut from "./CheckOut";
+import { Button } from "../ui/button";
+import { IEvent } from "@/lib/database/models/events.model";
 
 const CheckoutButton = ({ event }: { event: IEvent }) => {
   const { user } = useUser();
