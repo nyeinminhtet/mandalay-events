@@ -56,7 +56,7 @@ const Dropdown = ({ value, onChangeHandler }: DropdownProps) => {
   return (
     <Select onValueChange={onChangeHandler} defaultValue={value}>
       <SelectTrigger className="select-field">
-        <SelectValue placeholder="ပွဲအမျိုးအစား" />
+        <SelectValue placeholder="ပွဲအမျိုးအစား" className="text-gray-50" />
       </SelectTrigger>
       <SelectContent>
         {categories.length > 0 &&
@@ -71,7 +71,7 @@ const Dropdown = ({ value, onChangeHandler }: DropdownProps) => {
           ))}
 
         <AlertDialog>
-          <AlertDialogTrigger className="p-medium-14 flex w-full rounded-sm py-3 pl-8  hover:bg-muted-foreground hover:text-secondary focus:text-secondary">
+          <AlertDialogTrigger className="p-medium-14 flex w-full rounded-sm py-3 pl-8  hover:bg-primary-50 hover:text-secondary focus:text-secondary">
             အသစ်ဖန်တီးရန်
           </AlertDialogTrigger>
           <AlertDialogContent className="bg-white">

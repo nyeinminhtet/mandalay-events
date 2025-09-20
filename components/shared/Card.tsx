@@ -27,12 +27,12 @@ const Card = ({ event, hasOrderLink, hidePrice }: CardProps) => {
   return (
     <div
       className="group relative flex min-h-[380px] w-full max-w-[400px] flex-col overflow-hidden
-          rounded-xl bg-white shadow-md transition-all hover:shadow-lg md:min-h-[438px]"
+          rounded-xl bg-secondary/10 shadow-md transition-all hover:shadow-lg md:min-h-[438px]"
     >
       <Link
         href={`/events/${event._id}`}
         style={{ backgroundImage: `url(${event.imageUrl})` }}
-        className="flex-center flex-grow bg-gray-50 bg-cover bg-center text-grey-500"
+        className="flex-center flex-grow bg-gray-50 bg-cover bg-center text-grey-50"
       />
 
       {/* IS EVENT CREATOR.. */}
@@ -58,18 +58,18 @@ const Card = ({ event, hasOrderLink, hidePrice }: CardProps) => {
               {event.isFree ? "အခမဲ့" : `${event.price}MMK`}
             </span>
 
-            <p className="p-semibold-14 flex items-center rounded-full bg-grey-500/10 px-4 py-1 text-grey-500">
+            <p className="p-semibold-14 flex items-center rounded-full bg-grey-500/10 px-4 py-1 text-grey-50">
               {event.category.name}
             </p>
           </div>
         )}
 
-        <p className="p-medium-16 md:p-medium-18 text-gray-500">
+        <p className="p-medium-12 md:p-medium-14 text-gray-50">
           {formatDateTime(event.startDateTime).dateTime}
         </p>
 
         <Link href={`/events/${event._id}`} className="hover:opacity-75">
-          <p className="p-medium-16 md:p-medium-20 line-clamp-2 flex-1 text-black">
+          <p className="p-medium-16 md:p-medium-20 line-clamp-2 flex-1 text-white">
             {event.title}
           </p>
         </Link>
