@@ -12,7 +12,7 @@ const popins = Poppins({
 
 export const metadata: Metadata = {
   title: {
-    template: "Mandalay Events | %s",
+    template: "%s | Mandalay Events",
     default: "Mandalay Events",
   },
   description: "Find out the happiest events in Madalay.",

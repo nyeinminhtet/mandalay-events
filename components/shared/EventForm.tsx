@@ -156,8 +156,8 @@ const EventForm = ({ userId, type, event, eventId }: EventCreateProps) => {
               <FormItem className="w-full">
                 <FormControl className="h-72">
                   <Textarea
-                    placeholder="အကြောင်းအရာ"
                     {...field}
+                    placeholder="အကြောင်းအရာ"
                     className="textarea rounded-2xl"
                   />
                 </FormControl>
@@ -192,7 +192,7 @@ const EventForm = ({ userId, type, event, eventId }: EventCreateProps) => {
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>
-                  <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
+                  <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-primary/20 px-4 py-2">
                     <Image
                       src="/assets/icons/location-grey.svg"
                       alt="location icon"
@@ -200,8 +200,8 @@ const EventForm = ({ userId, type, event, eventId }: EventCreateProps) => {
                       height={24}
                     />
                     <Input
-                      placeholder="တည်နေရာ"
                       {...field}
+                      placeholder="တည်နေရာ"
                       className="input-field shadow-none"
                     />
                   </div>
@@ -220,7 +220,7 @@ const EventForm = ({ userId, type, event, eventId }: EventCreateProps) => {
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>
-                  <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
+                  <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-primary/20 px-4 py-2">
                     <Image
                       src="/assets/icons/calendar.svg"
                       alt="calendar icon"
@@ -228,7 +228,7 @@ const EventForm = ({ userId, type, event, eventId }: EventCreateProps) => {
                       height={24}
                       className="filter-grey"
                     />
-                    <p className="ml-3 whitespace-nowrap text-grey-600">
+                    <p className="ml-3 whitespace-nowrap text-grey-400">
                       စတင်မည့်ရက်:
                     </p>
                     <DatePicker
@@ -238,6 +238,7 @@ const EventForm = ({ userId, type, event, eventId }: EventCreateProps) => {
                       timeInputLabel="Time:"
                       dateFormat="dd/MM/yyyy h:mm aa"
                       wrapperClassName="datePicker"
+                      className="text-gray-50"
                     />
                   </div>
                 </FormControl>
@@ -253,7 +254,7 @@ const EventForm = ({ userId, type, event, eventId }: EventCreateProps) => {
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>
-                  <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
+                  <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-primary/20 px-4 py-2">
                     <Image
                       src="/assets/icons/calendar.svg"
                       alt="calendar icon"
@@ -261,7 +262,7 @@ const EventForm = ({ userId, type, event, eventId }: EventCreateProps) => {
                       height={24}
                       className="filter-grey"
                     />
-                    <p className="ml-3 whitespace-nowrap text-grey-600">
+                    <p className="ml-3 whitespace-nowrap text-gray-400">
                       ပြီးဆုံးမည့်ရက်:
                     </p>
                     <DatePicker
@@ -271,6 +272,7 @@ const EventForm = ({ userId, type, event, eventId }: EventCreateProps) => {
                       timeInputLabel="Time:"
                       dateFormat="dd/MM/yyyy h:mm aa"
                       wrapperClassName="datePicker"
+                      className="text-gray-50"
                     />
                   </div>
                 </FormControl>
@@ -288,7 +290,7 @@ const EventForm = ({ userId, type, event, eventId }: EventCreateProps) => {
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>
-                  <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
+                  <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-primary/20 px-4 py-2">
                     <Image
                       src="/assets/icons/dollar.svg"
                       alt="dollor icon"
@@ -297,10 +299,10 @@ const EventForm = ({ userId, type, event, eventId }: EventCreateProps) => {
                       className="filter-grey"
                     />
                     <Input
+                      {...field}
                       type="number"
                       placeholder="စျေးနှုန်း"
-                      {...field}
-                      className="p-regular-16 shadow-none border-0 bg-grey-50 outline-offset-0
+                      className="p-regular-16 shadow-none border-0 placeholder:text-gray-50 bg-primary/20 outline-offset-0
                        focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
                     />
                     <FormField
@@ -312,7 +314,7 @@ const EventForm = ({ userId, type, event, eventId }: EventCreateProps) => {
                             <div className="flex items-center">
                               <label
                                 htmlFor="isFree"
-                                className="whitespace-nowrap pr-3 leading-none peer-disabled:cursor-not-allowed
+                                className="whitespace-nowrap pr-3 leading-none text-gray-50 peer-disabled:cursor-not-allowed
                                           peer-disabled:opacity-70"
                               >
                                 အခမဲ့ လက်မှတ်
@@ -321,7 +323,7 @@ const EventForm = ({ userId, type, event, eventId }: EventCreateProps) => {
                                 id="isFree"
                                 onCheckedChange={field.onChange}
                                 checked={field.value}
-                                className="mr-2 h-5 w-5 border-2 border-primary-500"
+                                className="mr-2 h-5 w-5 border-2 border-white"
                               />
                             </div>
                           </FormControl>
@@ -343,7 +345,7 @@ const EventForm = ({ userId, type, event, eventId }: EventCreateProps) => {
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>
-                  <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
+                  <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-primary/20 px-4 py-2">
                     <Image
                       src="/assets/icons/link.svg"
                       alt="link icon"

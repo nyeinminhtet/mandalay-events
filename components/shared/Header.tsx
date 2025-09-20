@@ -10,7 +10,7 @@ import MobileNav from "./MobileNav";
 
 const Header = () => {
   return (
-    <header className="w-full border-b bg-secondary sticky top-0 z-20">
+    <header className="w-full bg-white/5 backdrop-blur sticky top-0 z-20">
       <div className="wrapper flex items-center justify-between">
         <Link href="/" className=" flex items-center gap-2">
           <Image
@@ -18,13 +18,13 @@ const Header = () => {
             width={38}
             height={38}
             alt="logo svg"
-            className="object-cover object-center"
+            className="object-cover bg-white rounded-full object-center"
           />
           <div className="hidden md:flex tracking-tighter font-semibold  text-muted-foreground">
-            <p className="first-letter:text-2xl first-letter:text-primary -mb-3">
+            <p className="first-letter:text-2xl first-letter:text-secondary -mb-3">
               Mandaly
             </p>
-            <span className="first-letter:text-2xl first-letter:text-primary">
+            <span className="first-letter:text-2xl first-letter:text-secondary">
               Events
             </span>
           </div>

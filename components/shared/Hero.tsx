@@ -22,7 +22,7 @@ const Hero = () => {
             variant="outline"
           >
             <Link href="#events" className="font-semibold">
-              Events
+              Explore Events
             </Link>
           </Button>
         </div>

@@ -27,16 +27,15 @@ const EventDetailsPage = async ({ params, searchParams }: SearchParamProps) => {
     <>
       <section className="flex justify-center bg-slate-950 bg-contain text-white">
         <div className="grid grid-cols-1 md:grid-cols-2 2xl:max-w-7xl ">
-          <div className="w-full h-[20rem] sm:h-[30rem] relative">
-            <Image
-              src={event.imageUrl}
-              alt="event image"
-              fill
-              quality={90}
-              priority
-              className="object-contain object-center"
-            />
-          </div>
+          <Image
+            src={event.imageUrl}
+            alt="event image"
+            width={800}
+            height={600}
+            quality={90}
+            priority
+            className=" w-full h-full"
+          />
 
           <div className="flex w-full flex-col gap-8 p-5 md:p-10 ">
             <div className="flex flex-col gap-6">

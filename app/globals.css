@@ -81,12 +81,12 @@ body {
   /* TYPOGRAPHY */
   /* 64 */
   .h1-bold {
-    @apply font-bold text-[40px] leading-[48px] lg:text-[48px] lg:leading-[60px]  xl:text-[58px] xl:leading-[74px];
+    @apply font-bold text-[40px] text-white leading-[48px] lg:text-[48px] lg:leading-[60px]  xl:text-[58px] xl:leading-[74px];
   }
 
   /* 40 */
   .h2-bold {
-    @apply font-bold text-[32px] leading-[40px] lg:text-[36px] lg:leading-[44px] xl:text-[40px] xl:leading-[48px];
+    @apply font-bold text-white text-[32px] leading-[40px] lg:text-[36px] lg:leading-[44px] xl:text-[40px] xl:leading-[48px];
   }
 
   .h2-medium {
@@ -188,15 +188,15 @@ body {
 
   /* SHADCN OVERRIDES */
   .select-field {
-    @apply w-full bg-grey-50 h-[54px] placeholder:text-grey-500 rounded-full p-regular-16 px-5 py-3 border-none focus-visible:ring-transparent focus:ring-transparent !important;
+    @apply w-full bg-primary/20 h-[54px] placeholder:text-grey-50 rounded-full p-regular-16 px-5 py-3 border-none focus-visible:ring-transparent text-gray-50 focus:ring-transparent !important;
   }
 
   .input-field {
-    @apply bg-grey-50 h-[54px] focus-visible:ring-offset-0 placeholder:text-grey-500 rounded-full p-regular-16 px-4 py-3 border-none focus-visible:ring-transparent !important;
+    @apply bg-primary/20 h-[54px] focus-visible:ring-offset-0 placeholder:text-grey-50 text-white rounded-full p-regular-16 px-4 py-3 border-none focus-visible:ring-transparent !important;
   }
 
   .textarea {
-    @apply bg-grey-50 flex flex-1 placeholder:text-grey-500 p-regular-16 px-5 py-3 border-none focus-visible:ring-transparent !important;
+    @apply bg-primary/20 text-white flex flex-1 placeholder:text-grey-50 p-regular-16 px-5 py-3 border-none focus-visible:ring-transparent !important;
   }
 
   .button {
@@ -204,7 +204,7 @@ body {
   }
 
   .select-item {
-    @apply py-3 cursor-pointer  focus:bg-primary-50;
+    @apply py-3 cursor-pointer  focus:bg-primary/10 focus:text-secondary hover:bg-primary-50;
   }
 
   .toggle-switch {
