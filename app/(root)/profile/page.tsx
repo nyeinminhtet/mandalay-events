@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { Metadata } from "next";
 
-import { auth } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
 
 import { SearchParamProps } from "@/types";
 import { Button } from "@/components/ui/button";
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 };
 
 const ProfilePage = async ({ searchParams }: SearchParamProps) => {
-  const { sessionClaims } = auth();
+  const { sessionClaims } = await auth();
   const userId = sessionClaims?.userId as string;
   const { ordersPage, eventsPage } = await searchParams;
 

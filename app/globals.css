@@ -65,7 +65,6 @@ body {
     hue-rotate(32deg) brightness(98%) contrast(92%);
 }
 
-/* ========================================== TAILWIND STYLES */
 @layer utilities {
   .wrapper {
     @apply max-w-7xl lg:mx-auto p-2 md:px-10 xl:px-5 w-full;

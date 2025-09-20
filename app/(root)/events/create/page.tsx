@@ -1,7 +1,7 @@
 import React from "react";
 import { Metadata } from "next";
 
-import { auth } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
 
 import EventForm from "@/components/shared/EventForm";
 
@@ -9,8 +9,8 @@ export const metadata: Metadata = {
   title: "Create Event",
 };
 
-const CreateEventPage = () => {
-  const { sessionClaims } = auth();
+const CreateEventPage = async () => {
+  const { sessionClaims } = await auth();
 
   const userId = sessionClaims?.userId as string;
 

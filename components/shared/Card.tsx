@@ -1,9 +1,11 @@
-import { IEvent } from "@/lib/database/models/events.model";
-import { formatDateTime } from "@/lib/utils";
-import { auth } from "@clerk/nextjs";
-import Image from "next/image";
-import Link from "next/link";
 import React from "react";
+import Link from "next/link";
+import Image from "next/image";
+
+import { auth } from "@clerk/nextjs/server";
+
+import { formatDateTime } from "@/lib/utils";
+import { IEvent } from "@/lib/database/models/events.model";
 import { DeleteConfirmation } from "./DeleteConfirmation";
 
 interface CardProps {
@@ -13,8 +15,12 @@ interface CardProps {
 }
 
 const Card = ({ event, hasOrderLink, hidePrice }: CardProps) => {
-  const { sessionClaims } = auth();
-  const userId = sessionClaims?.userId as string;
+  const getUserId = async (): Promise<string> => {
+    const { sessionClaims } = await auth();
+    return sessionClaims?.userId as string;
+  };
+
+  const userId = getUserId() as unknown as string;
 
   const isEventCreator = userId === event.organizer._id.toString();
 
