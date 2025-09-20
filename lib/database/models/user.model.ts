@@ -13,4 +13,5 @@ const UserSchema = new Schema({
   photo: { type: String, required: true },
 });
 
+// @ts-ignore
 export const User = models.User || model("User", UserSchema);
