@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import {
   Select,
@@ -10,9 +11,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { getAllCategories } from "@/lib/actions/category.action";
-import { Category, ICategory } from "@/lib/database/models/category.model";
+import { ICategory } from "@/lib/database/models/category.model";
 import { formUrlQuery, removeKeysFromQuery } from "@/lib/utils";
-import { useRouter, useSearchParams } from "next/navigation";
 
 const CategoryFilter = () => {
   const [categories, setCategories] = useState<ICategory[]>([]);
