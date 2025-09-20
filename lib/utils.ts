@@ -99,5 +99,6 @@ export function removeKeysFromQuery({
 }
 
 export const handleError = (error: unknown) => {
+  console.error(error);
   throw Error(typeof error === "string" ? error : JSON.stringify(error));
 };
