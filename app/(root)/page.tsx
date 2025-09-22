@@ -6,7 +6,7 @@ import { IEvent } from "@/lib/database/models/events.model";
 import EventsContainer from "@/components/shared/EventsContainer";
 import SearchAndFilter from "@/components/shared/SearchAndFilter";
 
-export default async function Home({ searchParams }: SearchParamProps) {
+const Home = async ({ searchParams }: SearchParamProps) => {
   const { page, query, category } = await searchParams;
 
   const pageValue = Number(page) || 1;
@@ -22,7 +22,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
 
   return (
     <>
-      <Hero />
+      {/* <Hero /> */}
 
       <section
         id="events"
@@ -43,4 +43,6 @@ export default async function Home({ searchParams }: SearchParamProps) {
       </section>
     </>
   );
-}
+};
+
+export default Home;
