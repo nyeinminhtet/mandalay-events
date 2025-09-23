@@ -22,7 +22,7 @@ const Home = async ({ searchParams }: SearchParamProps) => {
 
   return (
     <>
-      {/* <Hero /> */}
+      <Hero />
 
       <section
         id="events"
